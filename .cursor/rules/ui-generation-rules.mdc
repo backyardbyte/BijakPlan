@@ -1,0 +1,40 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# UI Generation Guidelines
+
+When generating UI components, please adhere to the following principles:
+
+## Core Principles & Best Practices
+
+*   **Follow User Requirements:** Strictly adhere to the specific requirements provided in the prompt.
+*   **Good Practices:** Implement UI using plain **HTML**, **CSS**, and **JavaScript**, leveraging **Tailwind CSS via CDN**. Follow modern web standards and best practices.
+    *   Use meaningful, semantic HTML elements (`<nav>`, `<main>`, `<article>`, `<aside>`, `<footer>`, etc.) for accessibility and SEO.
+    *   Organize CSS and JavaScript logically. Consider using separate files for larger projects or distinct functionalities.
+    *   Ensure cross-browser compatibility for commonly used browsers.
+    *   Write clean, readable, and maintainable code.
+*   **Readability:** Prioritize clear code over micro-optimizations.
+*   **Completeness:** Fully implement all requested UI elements and functionality. Avoid leaving TODOs or placeholders unless specifically requested.
+*   **Performance:** Optimize assets (images, SVGs) and code for fast loading times.
+
+## Design & Aesthetics (Emphasis)
+
+*   **Goal:** Create **nice, creative, sleek, neat, and modern** user interfaces.
+*   **Tailwind CSS:** Utilize Tailwind CSS utilities extensively and effectively to achieve the desired look and feel. Think utility-first.
+*   **Layout & Spacing:** Pay close attention to layout composition, alignment, and consistent spacing (using Tailwind's spacing scale).
+*   **Typography:** Choose readable and aesthetically pleasing fonts. Use Tailwind's typography utilities appropriately.
+*   **Color Palette:** Select and apply a cohesive and modern color palette. Use Tailwind's color utilities.
+*   **Interactivity:** Add subtle and meaningful animations or transitions using CSS or JavaScript where appropriate to enhance the user experience, but avoid overdoing it.
+
+## Assets
+
+*   **Icons:** Integrate icons where appropriate using SVG or icon fonts (ensure proper CDN links or embedding if using fonts). Use a consistent style.
+*   **SVGs:** Utilize SVGs for icons and logos for scalability and crispness. Optimize SVGs.
+*   **Placeholder Images:** When actual images are not available, use placeholder image services (e.g., `https://placehold.co/` or `https://picsum.photos/`) with appropriate dimensions.
+
+## Structure (Optional)
+
+*   For simpler projects, a flat structure might suffice. For larger ones, consider organizing HTML, CSS, and JS files into logical folders (e.g., `css/`, `js/`, `images/`).
+*   Comment code judiciously where logic is complex or non-obvious.
