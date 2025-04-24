@@ -109,6 +109,51 @@
             opacity: 1;
             transform: translate(0, 0);
         }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 85%;
+            max-width: 700px;
+            max-height: 85%;
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .lightbox-close:hover,
+        .lightbox-close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .testimonial-image {
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+        .testimonial-image:hover {
+            transform: scale(1.03);
+        }
     </style>
     <script>
         tailwind.config = {
@@ -197,10 +242,10 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="text-center md:text-left animated-element slide-in-left">
                     <h1 class="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight text-neutral-900">
-                        Nama <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">Blacklist?</span>
+                        Nama dah <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">Blacklist?</span>
                     </h1>
-                     <h2 class="text-3xl md:text-4xl font-bold text-neutral-700 mb-8">Kami Bantu Anda Selesai!</h2>
-                    <p class="text-lg md:text-xl text-neutral-500 mb-10 max-w-lg mx-auto md:mx-0">Keluar dari bebanan hutang & rekod buruk. Bina semula masa depan kewangan anda bersama kami.</p>
+                     <h2 class="text-3xl md:text-4xl font-bold text-neutral-700 mb-8">CCRIS? CTOS? Masih ada peluang!</h2>
+                    <p class="text-lg md:text-xl text-neutral-500 mb-10 max-w-lg mx-auto md:mx-0">Kami bantu semak kelayakan & urus permohonan loan anda.</p>
                     <div class="flex flex-col sm:flex-row justify-center md:justify-start items-center gap-4 mb-12">
                         <a href="#consultation" class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo text-white px-9 py-4 rounded-lg font-bold text-lg hover:from-primary-gradientTo hover:to-primary-gradientFrom transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center gap-2">
                             Konsultasi Percuma <i class="fas fa-arrow-right"></i>
@@ -217,7 +262,7 @@
                      <!-- Vibrant Image Placeholder -->
                      <div class="relative w-full max-w-md lg:max-w-lg">
                          <div class="aspect-square bg-neutral-200 rounded-3xl overflow-hidden shadow-xl border-4 border-white transform rotate-3 hover:rotate-0 transition duration-500 ease-in-out">
-                            <img src="img/hero.jpeg" alt="Pasukan BijakPlan gembira membantu pelanggan" class="w-full h-full object-cover object-center">
+                            <img src="img/hijabis-01.jpeg" alt="Pasukan BijakPlan gembira membantu pelanggan" class="w-full h-full object-cover object-center">
                         </div>
                         <!-- Floating Icon -->
                         <div class="absolute -bottom-5 -left-5 bg-white p-3 rounded-full shadow-lg animate-bounce">
@@ -234,21 +279,31 @@
 
     <!-- Intro Section (Problem) - Redesigned -->
     <section class="section-padding bg-white angled-divider-top">
-        <div class="w-full max-w-6xl mx-auto px-6 grid md:grid-cols-5 gap-12 items-center">
+        <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-5 gap-12 items-center">
             <div class="md:col-span-2 order-1 md:order-1 animated-element slide-in-left flex justify-center">
                  <div class="h-64 md:h-[380px] w-full max-w-sm bg-neutral-200 rounded-2xl overflow-hidden shadow-lg border border-white transform hover:scale-105 transition duration-500">
-                      <img src="img/03.png" alt="Individu risau tentang kewangan" class="w-full h-full object-cover object-center">
+                      <img src="img/hijabis-02.png" alt="Individu risau tentang kewangan" class="w-full h-full object-cover object-center">
                  </div>
             </div>
-            <div class="md:col-span-3 order-2 md:order-2 text-center md:text-left animated-element slide-in-right bg-white p-8 rounded-xl border-l-4 border-primary shadow-lg">
-                <h2 class="text-3xl md:text-4xl font-bold mb-5 leading-snug text-neutral-900">
-                    Terbeban Dengan <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">Komitmen Tinggi?</span>
+            <div class="md:col-span-3 order-2 md:order-2 text-center md:text-left animated-element slide-in-right bg-white p-6 md:p-8 rounded-xl border-l-4 border-primary shadow-lg">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-5 leading-snug text-neutral-900">
+                    Stress <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">Hutang Keliling Pinggang?</span>
                 </h2>
-                <p class="text-lg text-neutral-600 mb-6">Sama ada isu <span class="font-semibold text-primary-gradientFrom">AKPK, SAA, Legal,</span> atau <span class="font-semibold text-primary-gradientFrom">Potongan Gaji >60%</span>, kami sedia membantu anda mencari jalan keluar dan bernafas lega.</p>
-                <p class="text-lg font-medium italic text-primary-gradientTo mb-10">"Setiap masalah ada penyelesaiannya. Mari mulakan langkah pertama!"</p>
-                <!-- New Button Design (Primary Gradient) -->
-                <a href="#expertise" class="inline-block bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo text-white px-8 py-3 rounded-lg font-bold text-lg transition duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hover:from-primary-gradientTo hover:to-primary-gradientFrom">
-                    <span>Terokai Solusi Kami <i class="fas fa-arrow-right ml-2"></i></span>
+                <p class="text-lg text-neutral-600 mb-4">
+                    <span class="font-semibold text-primary-gradientFrom">AKPK? SAA? Saman Legal? Potongan Gaji 60%?</span><br>
+                    Masalah seperti komitmen tinggi, blacklist CCRIS/CTOS, atau loan overlapped memang boleh buat hidup rasa tercekik.
+                </p>
+                <p class="text-lg text-neutral-600 mb-6">
+                    Semakin lama ditangguh, semakin tinggi bunga & semakin sesak kewangan.
+                </p>
+                <blockquote class="text-lg font-medium italic text-neutral-500 border-l-4 border-neutral-300 pl-4 py-2 mb-6">
+                    "Dah cuba banyak cara… tapi tak tahu mana nak mula."
+                </blockquote>
+                <p class="text-lg text-neutral-600 mb-10">
+                    Kami bantu anda semak kelayakan secara percuma, susun balik kewangan, dan tenangkan semula hidup — tanpa perlu bayar upfront.
+                </p>
+                <a href="#steps" class="inline-block bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo text-white px-8 py-3 rounded-lg font-bold text-lg transition duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hover:from-primary-gradientTo hover:to-primary-gradientFrom">
+                    <span>Lihat Bagaimana Kami Boleh Bantu <i class="fas fa-arrow-right ml-2"></i></span>
                 </a>
             </div>
         </div>
@@ -257,37 +312,38 @@
     <!-- Features Section (Kepakaran Kami) - With Angled Bottom -->
     <section id="expertise" class="section-padding bg-primary-light angled-divider-bottom">
         <div class="w-full max-w-7xl mx-auto px-6 text-center relative z-20">
-            <h2 class="text-3xl md:text-4xl font-black mb-4 text-neutral-900">Ini <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent\">KEPAKARAN</span> Kami</h2>
-            <p class="text-lg text-neutral-500 mb-16 max-w-2xl mx-auto">Fokus kami adalah membantu anda capai kebebasan kewangan.</p>
+            <h2 class="text-3xl md:text-4xl font-black mb-4 text-neutral-900">Kepakaran <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent\">"One Stop Centre"</span> Kami</h2>
+            <p class="text-lg text-neutral-500 mb-6 max-w-2xl mx-auto">Kami fokus membantu anda keluar dari masalah kewangan yang merumitkan hidup dan menekan emosi.</p>
+            <p class="text-lg text-neutral-500 mb-16 max-w-2xl mx-auto">Dengan sistem & pengalaman yang terbukti, kami bantu anda dari A to Z.</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Feature Card Vibrant Style -->
                 <div class="bg-white p-6 rounded-xl shadow-lg card-hover-vibrant text-center animated-element slide-in-up">
                     <div class="bg-gradient-to-br from-primary-gradientFrom to-primary-gradientTo text-white rounded-xl w-16 h-16 flex items-center justify-center text-3xl mb-5 mx-auto shadow-md">
                          <i class="fas fa-user-check"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-2 text-neutral-800">Bebas Senarai Hitam</h3>
-                    <p class="text-neutral-600 text-sm leading-relaxed">Bersihkan nama anda dari senarai hitam bank.</p>
+                    <h3 class="text-lg font-bold mb-2 text-neutral-800">Bebas Dari Senarai Hitam</h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed">Membantu membersihkan nama anda daripada blacklist bank, CCRIS, CTOS atau sistem laporan negatif yang menjejaskan permohonan.</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-lg card-hover-vibrant text-center animated-element slide-in-up delay-1">
                      <div class="bg-gradient-to-br from-sky-400 to-secondary text-white rounded-xl w-16 h-16 flex items-center justify-center text-3xl mb-5 mx-auto shadow-md">
                          <i class="fas fa-file-signature"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-2 text-neutral-800">Pulihkan Rekod Kewangan</h3>
-                    <p class="text-neutral-600 text-sm leading-relaxed">Perbaiki rekod CCRIS/CTOS untuk peluang baru.</p>
+                    <h3 class="text-lg font-bold mb-2 text-neutral-800">Cantikkan Rekod Kewangan</h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed">Kami bantu perbaiki skor dan struktur kewangan supaya anda lebih mudah lulus permohonan dan urus semula aliran tunai.</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-lg card-hover-vibrant text-center animated-element slide-in-up delay-2">
                     <div class="bg-gradient-to-br from-emerald-400 to-emerald-600 text-white rounded-xl w-16 h-16 flex items-center justify-center text-3xl mb-5 mx-auto shadow-md">
                          <i class="fas fa-chart-pie"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-2 text-neutral-800">Kurangkan Komitmen</h3>
-                    <p class="text-neutral-600 text-sm leading-relaxed">Ringankan bebanan ansuran bulanan tinggi.</p>
+                    <h3 class="text-lg font-bold mb-2 text-neutral-800">Selesaikan Masalah Komitmen Tinggi</h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed">Kurangkan beban bulanan melalui penyatuan hutang & strategi kewangan tersusun – supaya gaji tidak habis sebelum hujung bulan.</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-lg card-hover-vibrant text-center animated-element slide-in-up delay-3">
                     <div class="bg-gradient-to-br from-indigo-400 to-indigo-600 text-white rounded-xl w-16 h-16 flex items-center justify-center text-3xl mb-5 mx-auto shadow-md">
                          <i class="fas fa-landmark"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-2 text-neutral-800">Urusan AKPK/SAA/Legal</h3>
-                    <p class="text-neutral-600 text-sm leading-relaxed">Nasihat pakar untuk isu berkaitan agensi & undang-undang.</p>
+                    <h3 class="text-lg font-bold mb-2 text-neutral-800">Tangani Masalah AKPK, SAA & Tindakan Legal</h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed">Kami sedia beri panduan untuk urus semula akaun anda yang terlibat dengan AKPK, SAA atau tindakan mahkamah – dengan cara yang sah & selamat.</p>
                 </div>
             </div>
         </div>
@@ -295,65 +351,65 @@
 
     <!-- Why Choose Us Section -->
     <section class="section-padding bg-white">
-        <div class="w-full max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-neutral-900">Kenapa <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">Bijak Plan</span>?</h2>
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-neutral-900">Kenapa Perlu Pilih <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">Bijak Plan</span>?</h2>
 
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-stretch">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-stretch">
 
                  <!-- Left Column: Commitment Box - Redesigned -->
-                <div class="lg:col-span-2 bg-gradient-to-br from-primary-gradientFrom to-primary-gradientTo p-8 rounded-2xl shadow-xl h-full text-white flex flex-col animated-element slide-in-left">
-                     <h3 class="text-3xl font-black mb-8 text-center tracking-tight">Komitmen <span class="underline decoration-wavy decoration-2 underline-offset-4">100%</span> Kami!</h3>
-                     <ul class="space-y-5 flex-grow"> <!-- Increased spacing -->
-                        <li class="flex items-start gap-4">
-                            <i class="fas fa-shield-alt text-white/70 mt-1 text-xl flex-shrink-0"></i> <!-- Changed icon & size -->
-                            <span class="text-base opacity-95">Bantu urus pinjaman <strong class="font-bold text-white">tak layak</strong> mohon ke bank.</span>
+                <div class="lg:col-span-2 bg-gradient-to-br from-primary-gradientFrom to-primary-gradientTo p-6 md:p-8 rounded-2xl shadow-xl h-full text-white flex flex-col animated-element slide-in-left">
+                     <h3 class="text-2xl md:text-3xl font-black mb-6 md:mb-8 text-center tracking-tight">Komitmen <span class="underline decoration-wavy decoration-2 underline-offset-4">100%</span> Kami!</h3>
+                     <ul class="space-y-4 md:space-y-5 flex-grow">
+                        <li class="flex items-start gap-3 md:gap-4">
+                            <i class="fas fa-shield-alt text-white/70 mt-1 text-lg md:text-xl flex-shrink-0"></i>
+                            <span class="text-sm md:text-base opacity-95">Bantu urus pinjaman <strong class="font-bold text-white">tak layak</strong> mohon ke bank.</span>
                         </li>
-                        <li class="flex items-start gap-4">
-                             <i class="fas fa-shield-alt text-white/70 mt-1 text-xl flex-shrink-0"></i>
-                            <span class="text-base opacity-95">Kadar faedah serendah <strong class="font-bold text-white">2.38%*</strong>.</span>
+                        <li class="flex items-start gap-3 md:gap-4">
+                             <i class="fas fa-shield-alt text-white/70 mt-1 text-lg md:text-xl flex-shrink-0"></i>
+                            <span class="text-sm md:text-base opacity-95">Kadar faedah serendah <strong class="font-bold text-white">2.38%*</strong>.</span>
                         </li>
-                         <li class="flex items-start gap-4">
-                            <i class="fas fa-shield-alt text-white/70 mt-1 text-xl flex-shrink-0"></i>
-                            <span class="text-base opacity-95"><strong class="font-bold text-white">TIADA CAJ AWAL.</strong> Konsultasi Percuma!</span>
+                         <li class="flex items-start gap-3 md:gap-4">
+                            <i class="fas fa-shield-alt text-white/70 mt-1 text-lg md:text-xl flex-shrink-0"></i>
+                            <span class="text-sm md:text-base opacity-95"><strong class="font-bold text-white">TIADA CAJ AWAL.</strong> Konsultasi Percuma!</span>
                         </li>
-                         <li class="flex items-start gap-4">
-                            <i class="fas fa-shield-alt text-white/70 mt-1 text-xl flex-shrink-0"></i>
-                            <span class="text-base opacity-95">Urus <strong class="font-bold text-white">potongan gaji, Biro Angkasa & auto-debit</strong>.</span>
+                         <li class="flex items-start gap-3 md:gap-4">
+                            <i class="fas fa-shield-alt text-white/70 mt-1 text-lg md:text-xl flex-shrink-0"></i>
+                            <span class="text-sm md:text-base opacity-95">Urus <strong class="font-bold text-white">potongan gaji, Biro Angkasa & auto-debit</strong>.</span>
                          </li>
                      </ul>
-                     <p class="text-xs opacity-70 mt-8 text-center">*Tertakluk pada Terma & Syarat.</p> <!-- Restyled disclaimer -->
+                     <p class="text-xs opacity-70 mt-8 text-center">*Tertakluk pada Terma & Syarat.</p>
                 </div>
 
                 <!-- Right Column: 4 Reasons -->
                 <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <!-- Reason Card Vibrant -->
-                    <div class="bg-white p-6 rounded-xl shadow-md text-left card-hover-vibrant border-l-4 border-primary-gradientFrom animated-element slide-in-right">
-                         <div class="text-3xl mb-3 bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md text-center sm:text-left card-hover-vibrant border-l-4 border-primary-gradientFrom animated-element slide-in-right">
+                         <div class="text-2xl md:text-3xl mb-2 md:mb-3 bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">
                              <i class="fas fa-user-tie"></i>
                         </div>
-                        <h3 class="text-lg font-bold mb-2 text-neutral-800">Pakar Berpengalaman</h3>
-                        <p class="text-neutral-600 text-sm leading-relaxed">10+ tahun pengalaman, solusi efektif.</p>
+                        <h3 class="text-lg font-bold mb-2 text-neutral-800">Pakar Kewangan</h3>
+                        <p class="text-neutral-600 text-xs sm:text-sm leading-relaxed">Lebih 10 tahun pengalaman membantu pelanggan selesaikan masalah kewangan.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md text-left card-hover-vibrant border-l-4 border-secondary animated-element slide-in-right delay-1">
-                          <div class="text-3xl mb-3 text-secondary">
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md text-center sm:text-left card-hover-vibrant border-l-4 border-secondary animated-element slide-in-right delay-1">
+                          <div class="text-2xl md:text-3xl mb-2 md:mb-3 text-secondary">
                              <i class="fas fa-rocket"></i>
                          </div>
-                        <h3 class="text-lg font-bold mb-2 text-neutral-800">Proses Pantas</h3>
-                        <p class="text-neutral-600 text-sm leading-relaxed">Hargai masa anda, proses cekap & dioptimumkan.</p>
+                        <h3 class="text-lg font-bold mb-2 text-neutral-800">Servis Pantas & Efisien</h3>
+                        <p class="text-neutral-600 text-xs sm:text-sm leading-relaxed">Proses pantas, mudah difahami & mesra pelanggan.</p>
                     </div>
-                     <div class="bg-white p-6 rounded-xl shadow-md text-left card-hover-vibrant border-l-4 border-amber-400 animated-element slide-in-right delay-2">
-                          <div class="text-3xl mb-3 text-amber-500">
+                     <div class="bg-white p-5 md:p-6 rounded-xl shadow-md text-center sm:text-left card-hover-vibrant border-l-4 border-amber-400 animated-element slide-in-right delay-2">
+                          <div class="text-2xl md:text-3xl mb-2 md:mb-3 text-amber-500">
                              <i class="fas fa-shield-alt"></i>
                          </div>
                         <h3 class="text-lg font-bold mb-2 text-neutral-800">Jujur & Telus</h3>
-                        <p class="text-neutral-600 text-sm leading-relaxed">Tiada caj tersembunyi. Maklumat anda selamat.</p>
+                        <p class="text-neutral-600 text-xs sm:text-sm leading-relaxed">Tiada caj tersembunyi. Semua maklumat dijelaskan dengan telus sejak awal lagi.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md text-left card-hover-vibrant border-l-4 border-emerald-500 animated-element slide-in-right delay-3">
-                         <div class="text-3xl mb-3 text-emerald-600">
+                    <div class="bg-white p-5 md:p-6 rounded-xl shadow-md text-center sm:text-left card-hover-vibrant border-l-4 border-emerald-500 animated-element slide-in-right delay-3">
+                         <div class="text-2xl md:text-3xl mb-2 md:mb-3 text-emerald-600">
                              <i class="fas fa-check-double"></i>
                          </div>
-                        <h3 class="text-lg font-bold mb-2 text-neutral-800">Kelulusan Tinggi</h3>
-                        <p class="text-neutral-600 text-sm leading-relaxed">Formula khas untuk kes sukar lulus (kerajaan & swasta).</p>
+                        <h3 class="text-lg font-bold mb-2 text-neutral-800">Kadar Kelulusan Tinggi</h3>
+                        <p class="text-neutral-600 text-xs sm:text-sm leading-relaxed">Formula khas untuk membantu pelanggan yang sukar lulus pinjaman di bank, termasuk blacklist/CTOS.</p>
                     </div>
                 </div>
 
@@ -361,19 +417,60 @@
         </div>
     </section>
 
+    <!-- New Commitment Section -->
+    <section class="section-padding bg-gradient-to-b from-neutral-50 to-white">
+        <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-neutral-900">Jangan Risau, <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">Kami Komited Membantu!</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-center md:text-left">
+                <!-- Commitment Item 1 -->
+                <div class="flex items-start gap-4 p-5 bg-white rounded-xl shadow-md border-l-4 border-primary-gradientFrom animated-element slide-in-up">
+                    <i class="fas fa-hands-helping text-primary text-2xl md:text-3xl mt-1 flex-shrink-0 w-8 text-center"></i>
+                    <div>
+                        <h4 class="font-semibold text-neutral-800 mb-1 text-lg">Urusan Pinjaman Fleksibel</h4>
+                        <p class="text-neutral-600 text-sm leading-relaxed">Urusan pinjaman untuk pelanggan yang tidak layak mohon terus ke bank, kami bantu semak & susun.</p>
+                    </div>
+                </div>
+                <!-- Commitment Item 2 -->
+                <div class="flex items-start gap-4 p-5 bg-white rounded-xl shadow-md border-l-4 border-secondary animated-element slide-in-up delay-1">
+                     <i class="fas fa-percent text-secondary text-2xl md:text-3xl mt-1 flex-shrink-0 w-8 text-center"></i>
+                     <div>
+                        <h4 class="font-semibold text-neutral-800 mb-1 text-lg">Kadar Keuntungan Menarik</h4>
+                        <p class="text-neutral-600 text-sm leading-relaxed">Kadar keuntungan serendah 2.80% (tertakluk pada kelayakan).</p>
+                     </div>
+                </div>
+                <!-- Commitment Item 3 -->
+                <div class="flex items-start gap-4 p-5 bg-white rounded-xl shadow-md border-l-4 border-amber-400 animated-element slide-in-up delay-2">
+                     <i class="fas fa-gift text-amber-500 text-2xl md:text-3xl mt-1 flex-shrink-0 w-8 text-center"></i>
+                     <div>
+                        <h4 class="font-semibold text-neutral-800 mb-1 text-lg">Tiada Caj Pendahuluan</h4>
+                        <p class="text-neutral-600 text-sm leading-relaxed">Tiada caj pendahuluan – semakan adalah 100% percuma.</p>
+                    </div>
+                </div>
+                <!-- Commitment Item 4 -->
+                <div class="flex items-start gap-4 p-5 bg-white rounded-xl shadow-md border-l-4 border-emerald-500 animated-element slide-in-up delay-3">
+                     <i class="fas fa-cogs text-emerald-600 text-2xl md:text-3xl mt-1 flex-shrink-0 w-8 text-center"></i>
+                     <div>
+                         <h4 class="font-semibold text-neutral-800 mb-1 text-lg">Pengurusan Potongan Gaji</h4>
+                         <p class="text-neutral-600 text-sm leading-relaxed">Boleh bantu urus potongan gaji majikan, biro angkasa atau auto-debit (mengikut kes).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- New Understanding Section -->
     <section class="section-padding bg-white">
-        <div class="w-full max-w-5xl mx-auto px-6 text-center">
+        <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-neutral-900">Kami <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">Memahami Cabaran</span> Anda</h2>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
                 <div class="animated-element slide-in-up">
-                    <img src="img/04.png" alt="Stress kewangan" class="rounded-xl shadow-md w-full h-64 object-cover object-center transition duration-300 hover:shadow-lg">
+                    <img src="img/muslim-01.png" alt="Stress kewangan" class="rounded-xl shadow-md w-full h-64 object-cover object-center transition duration-300 hover:shadow-lg">
                 </div>
                  <div class="animated-element slide-in-up delay-1">
-                    <img src="img/02.png" alt="Mengira perbelanjaan" class="rounded-xl shadow-md w-full h-64 object-cover object-center transition duration-300 hover:shadow-lg">
+                    <img src="img/muslim-02.png" alt="Mengira perbelanjaan" class="rounded-xl shadow-md w-full h-64 object-cover object-center transition duration-300 hover:shadow-lg">
                 </div>
                  <div class="animated-element slide-in-up delay-2">
-                    <img src="img/05.png" alt="Rasa lega selepas solusi" class="rounded-xl shadow-md w-full h-64 object-cover object-center transition duration-300 hover:shadow-lg">
+                    <img src="img/muslim-03.png" alt="Rasa lega selepas solusi" class="rounded-xl shadow-md w-full h-64 object-cover object-center transition duration-300 hover:shadow-lg">
                 </div>
             </div>
             <p class="mt-8 text-neutral-500 text-lg">Setiap orang layak mendapat peluang kedua untuk kestabilan kewangan.</p>
@@ -382,8 +479,8 @@
 
     <!-- Steps Section - Redesigned Minimal -->
     <section id="steps" class="section-padding gradient-bg-vibrant">
-        <div class="w-full max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-black text-center mb-16 text-neutral-900">Hanya <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">3 Langkah</span> Mudah!</h2>
+        <div class="w-full max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-black text-center mb-12 md:mb-16 text-neutral-900">Hanya <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">3 Langkah</span> Mudah!</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 text-center items-stretch">
                 <!-- Step Card 1 Minimal -->
                 <div class="relative animated-element slide-in-up">
@@ -393,7 +490,7 @@
                             <i class="fab fa-whatsapp"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-3 text-neutral-800">Whatsapp Kami</h3>
-                        <p class="text-neutral-600 text-sm leading-relaxed flex-grow">Hantar slip gaji 1 bulan ke <a href="https://wa.me/60137640032?text=Salam%20BijakPlan,%20saya%20berminat%20untuk%20dapatkan%20konsultasi%20percuma." target="_blank" class="font-semibold text-primary hover:opacity-80 whitespace-nowrap">+60 13-764 0032</a>.</p>
+                        <p class="text-neutral-600 text-sm leading-relaxed flex-grow">Hantar mesej terus ke <a href="https://wa.me/601130033453?text=Salam%20BijakPlan,%20saya%20berminat%20untuk%20dapatkan%20konsultasi%20percuma." target="_blank" class="font-semibold text-primary hover:opacity-80 whitespace-nowrap">+60 11-3003 3453</a>. Kami sedia bantu anda sekarang!</p>
                     </div>
                 </div>
 
@@ -414,10 +511,10 @@
                     <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-br from-primary-gradientFrom to-primary-gradientTo text-white rounded-full w-10 h-10 flex items-center justify-center text-lg font-bold border-2 border-white z-10">3</div>
                      <div class="bg-white p-6 pt-8 rounded-xl w-full flex flex-col h-full">
                          <div class="mb-4 text-4xl text-secondary">
-                             <i class="fas fa-comments-dollar"></i>
+                             <i class="fas fa-clipboard-check"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-neutral-800">Konsultasi & Solusi</h3>
-                        <p class="text-neutral-600 text-sm leading-relaxed flex-grow">Dapatkan pelan penyelesaian terbaik dalam 48 jam bekerja.</p>
+                        <h3 class="text-xl font-bold mb-3 text-neutral-800">Semakan Kelayakan</h3>
+                        <p class="text-neutral-600 text-sm leading-relaxed flex-grow">Kami akan semak & maklumkan keputusan dalam tempoh 48 jam bekerja.</p>
                     </div>
                  </div>
             </div>
@@ -426,43 +523,43 @@
 
     <!-- Before/After Commitment Section -->
     <section class="section-padding bg-white">
-         <div class="w-full max-w-6xl mx-auto px-6 text-center">
+         <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 text-center">
              <h2 class="text-3xl md:text-4xl font-bold mb-4 text-neutral-900">Transformasi <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">Komitmen Bulanan</span></h2>
             <p class="text-lg text-neutral-500 mb-12 max-w-3xl mx-auto">Lihat sendiri bagaimana kami bantu ringankan beban & hidup lebih selesa.</p>
-             <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 text-left items-stretch">
+             <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 text-left items-stretch">
                 <!-- Sebelum -->
-                <div class="bg-neutral-100 p-8 rounded-xl shadow-md border-l-4 border-red-400 flex flex-col animated-element slide-in-left">
-                    <h4 class="text-xl font-bold mb-6 text-center text-red-600">SEBELUM 😟</h4>
-                    <div class="space-y-3 text-neutral-700 flex-grow">
-                        <div class="flex justify-between border-b border-neutral-300 pb-2"><span>Kereta</span> <span class="font-semibold">RM 680</span></div>
-                        <div class="flex justify-between border-b border-neutral-300 pb-2"><span>Pinjaman Peribadi</span> <span class="font-semibold">RM 1,500</span></div>
-                        <div class="flex justify-between border-b border-neutral-300 pb-2"><span>Pinjaman Koperasi</span> <span class="font-semibold">RM 400</span></div>
-                        <div class="flex justify-between border-b border-neutral-300 pb-2"><span>Kad Kredit 1</span> <span class="font-semibold">RM 600</span></div>
-                        <div class="flex justify-between border-b border-neutral-300 pb-2"><span>Kad Kredit 2</span> <span class="font-semibold">RM 500</span></div>
+                <div class="bg-neutral-100 p-6 md:p-8 rounded-xl shadow-md border-l-4 border-red-400 flex flex-col animated-element slide-in-left">
+                    <h4 class="text-lg md:text-xl font-bold mb-4 md:mb-6 text-center text-red-600">SEBELUM 😟</h4>
+                    <div class="space-y-2 md:space-y-3 text-neutral-700 flex-grow text-sm md:text-base">
+                        <div class="flex justify-between border-b border-neutral-300 pb-1 md:pb-2"><span>Kereta</span> <span class="font-semibold">RM 680</span></div>
+                        <div class="flex justify-between border-b border-neutral-300 pb-1 md:pb-2"><span>Pinjaman Peribadi</span> <span class="font-semibold">RM 1,500</span></div>
+                        <div class="flex justify-between border-b border-neutral-300 pb-1 md:pb-2"><span>Pinjaman Koperasi</span> <span class="font-semibold">RM 400</span></div>
+                        <div class="flex justify-between border-b border-neutral-300 pb-1 md:pb-2"><span>Kad Kredit 1</span> <span class="font-semibold">RM 600</span></div>
+                        <div class="flex justify-between border-b border-neutral-300 pb-1 md:pb-2"><span>Kad Kredit 2</span> <span class="font-semibold">RM 500</span></div>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-neutral-400 flex justify-between text-lg font-bold text-red-600">
+                    <div class="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-neutral-400 flex justify-between text-base md:text-lg font-bold text-red-600">
                         <span>Jumlah Komitmen</span>
                         <span>RM 3,680</span>
                     </div>
                 </div>
                  <!-- Selepas -->
-                 <div class="bg-gradient-to-br from-emerald-50 via-green-50 to-lime-50 p-8 rounded-xl shadow-xl border-l-4 border-green-500 relative flex flex-col animated-element slide-in-right">
-                     <h4 class="text-xl font-bold mb-6 text-center text-green-700">SELEPAS DENGAN BIJAKPLAN 🎉</h4>
-                     <div class="space-y-3 text-neutral-700 flex-grow">
-                         <div class="flex justify-between border-b border-green-200 pb-2"><span>Ansuran Baru (Jimat!)</span> <span class="font-bold text-xl text-green-700">RM 2,857</span></div>
-                         <div class="flex justify-between items-center border-b border-green-200 py-1 text-neutral-400 italic"><span class="line-through">Hutang Lama 1</span> <span class="text-xs bg-green-100 text-green-700 font-semibold px-2 py-0.5 rounded">Selesai</span></div>
-                         <div class="flex justify-between items-center border-b border-green-200 py-1 text-neutral-400 italic"><span class="line-through">Hutang Lama 2</span> <span class="text-xs bg-green-100 text-green-700 font-semibold px-2 py-0.5 rounded">Selesai</span></div>
-                         <div class="flex justify-between items-center border-b border-green-200 py-1 text-neutral-400 italic"><span class="line-through">Hutang Lama 3</span> <span class="text-xs bg-green-100 text-green-700 font-semibold px-2 py-0.5 rounded">Selesai</span></div>
-                          <div class="pt-2 text-sm text-neutral-500">(*Contoh ilustrasi sahaja)</div>
+                 <div class="bg-gradient-to-br from-emerald-50 via-green-50 to-lime-50 p-6 md:p-8 rounded-xl shadow-xl border-l-4 border-green-500 relative flex flex-col animated-element slide-in-right">
+                     <h4 class="text-lg md:text-xl font-bold mb-4 md:mb-6 text-center text-green-700">SELEPAS DENGAN BIJAKPLAN 🎉</h4>
+                     <div class="space-y-2 md:space-y-3 text-neutral-700 flex-grow text-sm md:text-base">
+                         <div class="flex justify-between border-b border-green-200 pb-1 md:pb-2"><span>Ansuran Baru (Jimat!)</span> <span class="font-bold text-lg md:text-xl text-green-700">RM 2,857</span></div>
+                         <div class="flex justify-between items-center border-b border-green-200 py-0.5 md:py-1 text-neutral-400 italic"><span class="line-through">Hutang Lama 1</span> <span class="text-xs bg-green-100 text-green-700 font-semibold px-2 py-0.5 rounded">Selesai</span></div>
+                         <div class="flex justify-between items-center border-b border-green-200 py-0.5 md:py-1 text-neutral-400 italic"><span class="line-through">Hutang Lama 2</span> <span class="text-xs bg-green-100 text-green-700 font-semibold px-2 py-0.5 rounded">Selesai</span></div>
+                         <div class="flex justify-between items-center border-b border-green-200 py-0.5 md:py-1 text-neutral-400 italic"><span class="line-through">Hutang Lama 3</span> <span class="text-xs bg-green-100 text-green-700 font-semibold px-2 py-0.5 rounded">Selesai</span></div>
+                          <div class="pt-2 text-xs md:text-sm text-neutral-500">(*Contoh ilustrasi sahaja)</div>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-green-300 flex justify-between text-lg font-bold text-green-700">
+                    <div class="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-green-300 flex justify-between text-base md:text-lg font-bold text-green-700">
                          <span>Komitmen Baru</span>
                          <span>RM 2,857</span>
                     </div>
-                    <div class="absolute -top-6 -right-6 bg-gradient-to-br from-primary-gradientFrom to-primary-gradientTo text-white font-bold px-5 py-3 rounded-lg text-center transform rotate-[10deg] shadow-xl animate-pulse">
-                        <span class="block text-sm">ANDA JIMAT</span>
-                        <span class="block text-2xl">RM 823</span>
-                        <span class="block text-sm">Sebulan!</span>
+                    <div class="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-gradient-to-br from-primary-gradientFrom to-primary-gradientTo text-white font-bold px-4 py-2 md:px-5 md:py-3 rounded-lg text-center transform rotate-[10deg] shadow-xl animate-pulse">
+                        <span class="block text-xs md:text-sm">ANDA JIMAT</span>
+                        <span class="block text-xl md:text-2xl">RM 823</span>
+                        <span class="block text-xs md:text-sm">Sebulan!</span>
                     </div>
                  </div>
              </div>
@@ -474,75 +571,42 @@
     <section id="testimonials" class="section-padding gradient-bg-vibrant">
         <div class="w-full max-w-7xl mx-auto px-6 text-center">
              <h2 class="text-3xl md:text-4xl font-bold mb-16">Apa Kata <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">Pelanggan Gembira</span> Kami?</h2>
-            <!-- Updated Grid Layout with items-stretch -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-                <!-- Testimonial Card 1 - Redesigned -->
-                 <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col border-t-4 border-primary animated-element slide-in-up">
-                    <div class="flex-grow mb-5">
-                        <i class="fas fa-quote-left text-primary opacity-30 text-2xl mb-4 inline-block"></i>
-                        <p class="italic text-neutral-600 text-lg text-left">"Servis terbaik... Dah cuba banyak tempat tapi tak lepas. Terima kasih Bijak Plan bantu selesaikan masalah blacklist saya."</p>
-                    </div>
-                     <div class="mt-auto pt-4 border-t border-neutral-200 text-left">
-                        <p class="font-bold text-neutral-800">M. Syafiq</p>
-                        <p class="text-sm text-neutral-500">AKPK RM 100,000 Selesai</p>
-                     </div>
-                 </div>
-                 <!-- Testimonial Card 2 - Redesigned -->
-                  <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col border-t-4 border-secondary animated-element slide-in-up delay-1">
-                    <div class="flex-grow mb-5">
-                        <i class="fas fa-quote-left text-secondary opacity-30 text-2xl mb-4 inline-block"></i>
-                        <p class="italic text-neutral-600 text-lg text-left">"Proses cepat & mudah. Dulu pening fikir hutang kad kredit. Sekarang dah settle, komitmen bulanan pun kurang banyak."</p>
-                    </div>
-                     <div class="mt-auto pt-4 border-t border-neutral-200 text-left">
-                         <p class="font-bold text-neutral-800">Puan Jamilah</p>
-                        <p class="text-sm text-neutral-500">Blacklist RM 10,000 Selesai</p>
-                    </div>
-                 </div>
-                 <!-- Testimonial Card 3 - Redesigned -->
-                  <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col border-t-4 border-amber-400 animated-element slide-in-up delay-2">
-                    <div class="flex-grow mb-5">
-                         <i class="fas fa-quote-left text-amber-500 opacity-30 text-2xl mb-4 inline-block"></i>
-                        <p class="italic text-neutral-600 text-lg text-left">"Terima kasih Tuan! Lepas ni boleh fokus kerja tanpa gangguan collector call. Servis memang 10/10. Recommended!"</p>
-                    </div>
-                     <div class="mt-auto pt-4 border-t border-neutral-200 text-left">
-                        <p class="font-bold text-neutral-800">Encik Razali</p>
-                        <p class="text-sm text-neutral-500">Legal RM 42,000 Selesai</p>
-                     </div>
-                 </div>
-                 <!-- Testimonial Card 4 - Redesigned -->
-                 <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col border-t-4 border-teal-500 animated-element slide-in-up delay-3">
-                     <div class="flex-grow mb-5">
-                        <i class="fas fa-quote-left text-teal-600 opacity-30 text-2xl mb-4 inline-block"></i>
-                        <p class="italic text-neutral-600 text-lg text-left">"Staff sangat membantu dan faham masalah saya. Penerangan jelas, senang faham. Hutang Koperasi RM 30k settle!"</p>
-                    </div>
-                     <div class="mt-auto pt-4 border-t border-neutral-200 text-left">
-                        <p class="font-bold text-neutral-800">Aisyah R.</p>
-                        <p class="text-sm text-neutral-500">Hutang Koperasi RM 30,000 Selesai</p>
-                     </div>
-                 </div>
-                 <!-- Testimonial Card 5 - Redesigned -->
-                  <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col border-t-4 border-cyan-500 animated-element slide-in-up delay-4">
-                    <div class="flex-grow mb-5">
-                        <i class="fas fa-quote-left text-cyan-600 opacity-30 text-2xl mb-4 inline-block"></i>
-                        <p class="italic text-neutral-600 text-lg text-left">"Alhamdulillah, bebanan hutang berkurang. Boleh simpan duit lebih sikit sekarang. Terima kasih BijakPlan."</p>
-                    </div>
-                     <div class="mt-auto pt-4 border-t border-neutral-200 text-left">
-                         <p class="font-bold text-neutral-800">En. Ismail</p>
-                        <p class="text-sm text-neutral-500">Komitmen Tinggi Berkurang</p>
-                    </div>
-                 </div>
-                 <!-- Testimonial Card 6 - Redesigned -->
-                  <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col border-t-4 border-purple-500 animated-element slide-in-up delay-5">
-                    <div class="flex-grow mb-5">
-                        <i class="fas fa-quote-left text-purple-600 opacity-30 text-2xl mb-4 inline-block"></i>
-                        <p class="italic text-neutral-600 text-lg text-left">"Memang bijak! Sangat profesional dan urusan lancar. Highly recommended untuk sesiapa yg ada masalah kewangan."</p>
-                    </div>
-                     <div class="mt-auto pt-4 border-t border-neutral-200 text-left">
-                        <p class="font-bold text-neutral-800">Cik Nadia</p>
-                        <p class="text-sm text-neutral-500">Pinjaman Peribadi RM 15,000 Selesai</p>
-                     </div>
-                 </div>
-            </div>
+            <!-- Updated Grid Layout -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+                <!-- Testimonial Images -->
+                <div class="animated-element slide-in-up bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4009.PNG" alt="Testimoni Pelanggan 1" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-1 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4008.PNG" alt="Testimoni Pelanggan 2" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-2 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4007.PNG" alt="Testimoni Pelanggan 3" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-3 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4006.PNG" alt="Testimoni Pelanggan 4" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-4 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4005.PNG" alt="Testimoni Pelanggan 5" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-5 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4004.PNG" alt="Testimoni Pelanggan 6" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4003.PNG" alt="Testimoni Pelanggan 7" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-1 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4002.PNG" alt="Testimoni Pelanggan 8" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-2 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4001.PNG" alt="Testimoni Pelanggan 9" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-3 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_3999.PNG" alt="Testimoni Pelanggan 10" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-4 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_3998.PNG" alt="Testimoni Pelanggan 11" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-5 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_3997.PNG" alt="Testimoni Pelanggan 12" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_3996.PNG" alt="Testimoni Pelanggan 13" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-1 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4028.PNG" alt="Testimoni Pelanggan 14" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-2 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4027.PNG" alt="Testimoni Pelanggan 15" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-3 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4026.PNG" alt="Testimoni Pelanggan 16" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-4 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4025.PNG" alt="Testimoni Pelanggan 17" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-5 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4024.PNG" alt="Testimoni Pelanggan 18" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4023.PNG" alt="Testimoni Pelanggan 19" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-1 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4022.PNG" alt="Testimoni Pelanggan 20" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-2 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4021.PNG" alt="Testimoni Pelanggan 21" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-3 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4020.PNG" alt="Testimoni Pelanggan 22" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-4 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4019.PNG" alt="Testimoni Pelanggan 23" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-5 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4018.PNG" alt="Testimoni Pelanggan 24" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4017.PNG" alt="Testimoni Pelanggan 25" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-1 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4016.PNG" alt="Testimoni Pelanggan 26" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-2 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4015.PNG" alt="Testimoni Pelanggan 27" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-3 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4014.PNG" alt="Testimoni Pelanggan 28" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-4 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4013.PNG" alt="Testimoni Pelanggan 29" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-5 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4012.PNG" alt="Testimoni Pelanggan 30" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4011.PNG" alt="Testimoni Pelanggan 31" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+                <div class="animated-element slide-in-up delay-1 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4010.PNG" alt="Testimoni Pelanggan 32" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
+             </div>
         </div>
     </section>
 
@@ -554,10 +618,10 @@
             <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="absolute inset-0 w-full h-full transform scale-y-[-1]"><path d="M0 10 C 20 0, 40 0, 50 10 S 80 20, 100 10 V 0 H 0 Z" fill="#ffffff"/></svg>
          </div>
 
-         <div class="w-full max-w-4xl mx-auto px-6 text-center relative z-10 animated-element slide-in-up">
-             <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight drop-shadow-lg">Sedia Untuk Bebas Hutang?</h2>
-             <p class="text-lg md:text-xl text-pink-100 mb-10 max-w-2xl mx-auto">Hubungi kami sekarang! Dapatkan konsultasi <span class="font-extrabold text-white underline decoration-white decoration-wavy decoration-2 underline-offset-4">PERCUMA</span> hari ini.</p>
-             <a href="https://wa.me/60137640032?text=Salam%20BijakPlan,%20saya%20berminat%20untuk%20dapatkan%20konsultasi%20percuma." target="_blank" class="whatsapp-button !bg-white text-white hover:!opacity-90 !px-10 !py-4 !text-lg md:!text-xl !font-bold transform hover:scale-105 hover:shadow-2xl rounded-lg">
+         <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10 animated-element slide-in-up">
+             <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight drop-shadow-lg">Sedia Untuk Bebas Hutang?</h2>
+             <p class="text-base sm:text-lg md:text-xl text-pink-100 mb-10 max-w-2xl mx-auto">Hubungi kami sekarang! Dapatkan konsultasi <span class="font-extrabold text-white underline decoration-white decoration-wavy decoration-2 underline-offset-4">PERCUMA</span> hari ini.</p>
+             <a href="https://wa.me/601130033453?text=Salam%20BijakPlan,%20saya%20berminat%20untuk%20dapatkan%20konsultasi%20percuma." target="_blank" class="whatsapp-button !bg-white text-white hover:!opacity-90 !px-8 md:!px-10 !py-3 md:!py-4 !text-base sm:!text-lg md:!text-xl !font-bold transform hover:scale-105 hover:shadow-2xl rounded-lg">
                  <i class="fab fa-whatsapp mr-2"></i> Whatsapp Sekarang!
             </a>
              <p class="text-sm text-pink-200 mt-8 opacity-90">Mulakan langkah pertama ke arah kebebasan kewangan!</p>
@@ -565,10 +629,10 @@
     </section>
 
     <!-- Footer - Redesigned -->
-    <footer id="contact" class="bg-neutral-900 text-neutral-400 pt-16 pb-8"> <!-- Updated background -->
-        <div class="w-full max-w-7xl mx-auto px-6">
+    <footer id="contact" class="bg-neutral-900 text-neutral-400 pt-12 md:pt-16 pb-8">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6">
             <!-- Simplified 3-column layout -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10 pb-10 border-b border-neutral-700">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-8 md:mb-10 pb-8 md:pb-10 border-b border-neutral-700">
                 <!-- Column 1: Brand & Description -->
                 <div class="md:col-span-1 text-center md:text-left">
                      <a href="#" class="inline-block mb-5">
@@ -583,8 +647,8 @@
                 </div>
                 <!-- Column 2: Quick Links -->
                 <div class="md:col-span-1">
-                    <h5 class="text-lg font-semibold text-white mb-5">Pautan Pantas</h5>
-                    <ul class="space-y-3 text-sm">
+                    <h5 class="text-lg font-semibold text-white mb-4 md:mb-5">Pautan Pantas</h5>
+                    <ul class="space-y-2 md:space-y-3 text-sm">
                         <li><a href="#expertise" class="flex items-center gap-2 hover:text-primary-gradientFrom transition duration-200"><i class="fas fa-angle-right w-3"></i> Kepakaran</a></li>
                         <li><a href="#steps" class="flex items-center gap-2 hover:text-primary-gradientFrom transition duration-200"><i class="fas fa-angle-right w-3"></i> Langkah Mudah</a></li>
                         <li><a href="#testimonials" class="flex items-center gap-2 hover:text-primary-gradientFrom transition duration-200"><i class="fas fa-angle-right w-3"></i> Testimoni</a></li>
@@ -594,8 +658,8 @@
                 </div>
                  <!-- Column 3: Contact & Social -->
                  <div class="md:col-span-1">
-                    <h5 class="text-lg font-semibold text-white mb-5">Hubungi Kami</h5>
-                    <address class="not-italic space-y-4">
+                    <h5 class="text-lg font-semibold text-white mb-4 md:mb-5">Hubungi Kami</h5>
+                    <address class="not-italic space-y-3 md:space-y-4">
                         <p class="flex items-start text-sm">
                             <i class="fas fa-map-marker-alt w-4 mr-3 text-primary-gradientFrom mt-1 flex-shrink-0"></i>
                             <span>No. 12-7, Block 3a, Jln Wangsa Delima 10,<br>Wangsa Link, 53300 KL.</span>
@@ -609,16 +673,16 @@
                         <h5 class="text-base font-semibold text-white mb-4">Ikuti Kami</h5>
                         <div class="flex space-x-3">
                             <!-- Redesigned Social Icons (Outline on hover) -->
-                            <a href="#" aria-label="Facebook" class="text-neutral-400 border border-neutral-700 hover:border-pink-500 hover:text-pink-500 transition duration-300 text-lg w-9 h-9 rounded-full flex items-center justify-center">
+                            <a href="https://www.facebook.com/profile.php?id=61575547672931" target="_blank" aria-label="Facebook" class="text-neutral-400 border border-neutral-700 hover:border-pink-500 hover:text-pink-500 transition duration-300 text-base md:text-lg w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="#" aria-label="Instagram" class="text-neutral-400 border border-neutral-700 hover:border-pink-500 hover:text-pink-500 transition duration-300 text-lg w-9 h-9 rounded-full flex items-center justify-center">
+                            <a href="#" aria-label="Instagram" class="text-neutral-400 border border-neutral-700 hover:border-pink-500 hover:text-pink-500 transition duration-300 text-base md:text-lg w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="#" aria-label="TikTok" class="text-neutral-400 border border-neutral-700 hover:border-pink-500 hover:text-pink-500 transition duration-300 text-lg w-9 h-9 rounded-full flex items-center justify-center">
+                            <a href="https://www.tiktok.com/@bijakplanmarketing" target="_blank" aria-label="TikTok" class="text-neutral-400 border border-neutral-700 hover:border-pink-500 hover:text-pink-500 transition duration-300 text-base md:text-lg w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center">
                                 <i class="fab fa-tiktok"></i>
                             </a>
-                            <a href="https://wa.me/60137640032" aria-label="WhatsApp" class="text-neutral-400 border border-neutral-700 hover:border-green-500 hover:text-green-500 transition duration-300 text-lg w-9 h-9 rounded-full flex items-center justify-center">
+                            <a href="https://wa.me/601130033453" aria-label="WhatsApp" class="text-neutral-400 border border-neutral-700 hover:border-green-500 hover:text-green-500 transition duration-300 text-base md:text-lg w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center">
                                 <i class="fab fa-whatsapp"></i>
                             </a>
                         </div>
@@ -630,6 +694,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="myLightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+    </div>
 
     <!-- Intersection Observer for Animations -->
     <script>
@@ -659,6 +729,34 @@
                 observer.observe(el);
             });
         });
+
+        // Lightbox Script
+        document.addEventListener("DOMContentLoaded", function() {
+            const lightbox = document.getElementById('myLightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const closeBtn = document.querySelector('.lightbox-close');
+            const testimonialImages = document.querySelectorAll('.testimonial-image');
+
+            testimonialImages.forEach(image => {
+                image.addEventListener('click', function(){
+                    lightbox.style.display = "block";
+                    lightboxImg.src = this.src;
+                });
+            });
+
+            function closeLightbox() {
+                 lightbox.style.display = "none";
+            }
+
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function(event) {
+                // Close if clicked outside the image content
+                if (event.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+        });
+
     </script>
 
 </body>
