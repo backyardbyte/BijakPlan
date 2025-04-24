@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> <!-- Poppins, added 900 weight -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Swiper.js Carousel CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -162,6 +164,20 @@
         }
         .cta-pulse {
             animation: ctaPulse 2s infinite ease-in-out;
+        }
+
+        /* Swiper Custom Styles */
+        .testimonial-swiper .swiper-button-prev, 
+        .testimonial-swiper .swiper-button-next {
+            color: theme('colors.primary.DEFAULT'); /* Use primary color */
+            transition: color 0.3s ease;
+        }
+        .testimonial-swiper .swiper-button-prev:hover, 
+        .testimonial-swiper .swiper-button-next:hover {
+             color: theme('colors.primary.gradientTo'); /* Use gradient end color on hover */
+        }
+        .testimonial-swiper .swiper-pagination-bullet-active {
+            background-color: theme('colors.primary.DEFAULT'); /* Use primary color for active bullet */
         }
     </style>
     <script>
@@ -580,42 +596,51 @@
     <section id="testimonials" class="section-padding gradient-bg-vibrant">
         <div class="w-full max-w-7xl mx-auto px-6 text-center">
              <h2 class="text-3xl md:text-4xl font-bold mb-16">Apa Kata <span class="bg-gradient-to-r from-primary-gradientFrom to-primary-gradientTo bg-clip-text text-transparent">Pelanggan</span> Kami?</h2>
-            <!-- Updated Grid Layout -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-                <!-- Testimonial Images -->
-                <div class="animated-element slide-in-up bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4009.PNG" alt="Testimoni Pelanggan 1" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-1 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4008.PNG" alt="Testimoni Pelanggan 2" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-2 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4007.PNG" alt="Testimoni Pelanggan 3" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-3 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4006.PNG" alt="Testimoni Pelanggan 4" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-4 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4005.PNG" alt="Testimoni Pelanggan 5" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-5 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4004.PNG" alt="Testimoni Pelanggan 6" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4003.PNG" alt="Testimoni Pelanggan 7" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-1 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4002.PNG" alt="Testimoni Pelanggan 8" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-2 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4001.PNG" alt="Testimoni Pelanggan 9" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-3 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_3999.PNG" alt="Testimoni Pelanggan 10" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-4 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_3998.PNG" alt="Testimoni Pelanggan 11" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-5 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_3997.PNG" alt="Testimoni Pelanggan 12" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_3996.PNG" alt="Testimoni Pelanggan 13" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-1 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4028.PNG" alt="Testimoni Pelanggan 14" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-2 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4027.PNG" alt="Testimoni Pelanggan 15" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-3 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4026.PNG" alt="Testimoni Pelanggan 16" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-4 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4025.PNG" alt="Testimoni Pelanggan 17" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-5 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4024.PNG" alt="Testimoni Pelanggan 18" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4023.PNG" alt="Testimoni Pelanggan 19" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-1 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4022.PNG" alt="Testimoni Pelanggan 20" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-2 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4021.PNG" alt="Testimoni Pelanggan 21" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-3 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4020.PNG" alt="Testimoni Pelanggan 22" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-4 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4019.PNG" alt="Testimoni Pelanggan 23" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-5 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4018.PNG" alt="Testimoni Pelanggan 24" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4017.PNG" alt="Testimoni Pelanggan 25" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-1 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4016.PNG" alt="Testimoni Pelanggan 26" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-2 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4015.PNG" alt="Testimoni Pelanggan 27" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-3 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4014.PNG" alt="Testimoni Pelanggan 28" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-4 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4013.PNG" alt="Testimoni Pelanggan 29" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-5 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4012.PNG" alt="Testimoni Pelanggan 30" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4011.PNG" alt="Testimoni Pelanggan 31" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-                <div class="animated-element slide-in-up delay-1 bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4010.PNG" alt="Testimoni Pelanggan 32" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div>
-             </div>
+            
+             <!-- Swiper Container -->
+            <div class="swiper testimonial-swiper overflow-hidden relative pb-12 md:pb-16"> <!-- Added padding-bottom for pagination -->
+                <div class="swiper-wrapper">
+                    <!-- Original grid items become swiper slides -->
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4009.PNG" alt="Testimoni Pelanggan 1" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4008.PNG" alt="Testimoni Pelanggan 2" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4007.PNG" alt="Testimoni Pelanggan 3" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4006.PNG" alt="Testimoni Pelanggan 4" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4005.PNG" alt="Testimoni Pelanggan 5" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4004.PNG" alt="Testimoni Pelanggan 6" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4003.PNG" alt="Testimoni Pelanggan 7" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4002.PNG" alt="Testimoni Pelanggan 8" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4001.PNG" alt="Testimoni Pelanggan 9" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_3999.PNG" alt="Testimoni Pelanggan 10" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_3998.PNG" alt="Testimoni Pelanggan 11" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_3997.PNG" alt="Testimoni Pelanggan 12" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_3996.PNG" alt="Testimoni Pelanggan 13" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4028.PNG" alt="Testimoni Pelanggan 14" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4027.PNG" alt="Testimoni Pelanggan 15" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4026.PNG" alt="Testimoni Pelanggan 16" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4025.PNG" alt="Testimoni Pelanggan 17" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4024.PNG" alt="Testimoni Pelanggan 18" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4023.PNG" alt="Testimoni Pelanggan 19" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4022.PNG" alt="Testimoni Pelanggan 20" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4021.PNG" alt="Testimoni Pelanggan 21" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4020.PNG" alt="Testimoni Pelanggan 22" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4019.PNG" alt="Testimoni Pelanggan 23" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4018.PNG" alt="Testimoni Pelanggan 24" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4017.PNG" alt="Testimoni Pelanggan 25" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4016.PNG" alt="Testimoni Pelanggan 26" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4015.PNG" alt="Testimoni Pelanggan 27" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4014.PNG" alt="Testimoni Pelanggan 28" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4013.PNG" alt="Testimoni Pelanggan 29" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4012.PNG" alt="Testimoni Pelanggan 30" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4011.PNG" alt="Testimoni Pelanggan 31" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                    <div class="swiper-slide"><div class="animated-element bg-white p-2 rounded-xl shadow-md"><img src="img/testimonials/IMG_4010.PNG" alt="Testimoni Pelanggan 32" class="testimonial-image rounded-lg w-full h-auto max-h-80 object-contain"></div></div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination absolute bottom-0 left-0 w-full"></div>
+                 <!-- Add Navigation -->
+                 <div class="swiper-button-prev absolute left-2 top-1/2 transform -translate-y-1/2"></div>
+                <div class="swiper-button-next absolute right-2 top-1/2 transform -translate-y-1/2"></div>
+            </div>
+             <!-- End Swiper Container -->
         </div>
     </section>
 
@@ -848,6 +873,41 @@
             link.addEventListener('click', closeDrawer);
         });
 
+    </script>
+    <!-- Swiper JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Swiper Initialization -->
+    <script>
+         const swiper = new Swiper('.testimonial-swiper', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 20, 
+            autoplay: { // Added autoplay configuration
+                delay: 3000, // 3 seconds delay
+                disableOnInteraction: false, // Autoplay continues after user interaction
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true, // Added dynamic bullets
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                // when window width is >= 640px (sm)
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 25 // Increased space
+                },
+                // when window width is >= 1024px (lg)
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30 // Increased space
+                }
+            }
+        });
     </script>
 
 </body>
