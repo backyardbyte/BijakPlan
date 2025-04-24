@@ -179,6 +179,72 @@
         .testimonial-swiper .swiper-pagination-bullet-active {
             background-color: theme('colors.primary.DEFAULT'); /* Use primary color for active bullet */
         }
+
+        /* Sticker Button Styles */
+        .sticker-button {
+            /* Base styles */
+            position: fixed;
+            bottom: 2rem; /* bottom-8, moved up slightly */
+            left: 1rem; /* Temporarily move fully on-screen */
+            z-index: 999;
+            height: 3rem; /* h-12 */
+            border-radius: 9999px; /* rounded-full */
+            padding-left: 0.75rem; /* px-3 */
+            padding-right: 0.75rem; /* px-3 */
+            width: 3rem; /* Match height for circle */
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: theme('boxShadow.xl');
+            background-image: linear-gradient(to right, theme('colors.green.500'), theme('colors.green.400'));
+            color: white;
+            gap: 0.5rem; /* gap-2 */
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            /* transform: rotate(-5deg); Removed initial rotation */
+        }
+        .sticker-button:hover {
+             /* transform: rotate(0deg) scale(1.05); Removed hover rotation */
+             transform: scale(1.05);
+        }
+        .sticker-button .sticker-text {
+            white-space: nowrap;
+            opacity: 0;
+            max-width: 0;
+            transition: max-width 0.3s ease-in-out, opacity 0.2s ease-in-out;
+            font-size: theme('fontSize.sm');
+            font-weight: theme('fontWeight.semibold');
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
+            justify-content: start;
+            left: 1rem; /* Move fully onto screen (left-4) */
+            /* transform: rotate(0deg); Removed */
+        }
+
+        .sticker-button.is-expanded {
+            width: auto; /* Auto width when expanded */
+            border-radius: theme('borderRadius.lg'); /* rounded-lg */
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
+            justify-content: start;
+            transform: rotate(0deg); /* No rotation when expanded */
+        }
+         .sticker-button.is-expanded .sticker-text {
+            opacity: 1;
+            max-width: 100px; /* Adjust max-width as needed */
+         }
+         .sticker-button.is-expanded:hover {
+             transform: scale(1.03); /* Smaller hover effect when expanded */
+        }
+        
+        /* Hide on desktop */
+        @media (min-width: 768px) {
+            .sticker-button {
+                display: none;
+            }
+        }
+
     </style>
     <script>
         tailwind.config = {
@@ -234,7 +300,7 @@
 <body class="bg-neutral-100 text-neutral-700 antialiased">
 
     <!-- Header -->
-    <header class="bg-white shadow-subtle w-full">
+    <header class="hidden md:block bg-white shadow-subtle w-full"> <!-- Hidden by default, shown on md+ -->
         <div class="w-full max-w-7xl mx-auto px-6">
             <nav class="flex justify-between items-center py-4">
                 <a href="#" class="block">
@@ -736,18 +802,10 @@
         <img class="lightbox-content" id="lightboxImg">
     </div>
 
-    <!-- Mobile Top-Left Buttons Container -->
-    <div id="mobile-top-buttons" class="md:hidden fixed top-4 left-4 z-[60] flex items-center gap-2">
-        <!-- Drawer Toggle Button -->
-        <button id="drawer-toggle" class="bg-white text-neutral-700 w-10 h-10 rounded-md shadow-md flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
-            <i class="fas fa-bars text-lg"></i>
-        </button>
-        <!-- Semak Kelayakan Button -->
-        <a href="https://wa.me/60137640032?text=Salam%20BijakPlan,%20saya%20berminat%20untuk%20dapatkan%20konsultasi%20percuma." target="_blank" class="bg-gradient-to-r from-green-500 to-green-400 text-white px-3 h-10 rounded-lg shadow-lg flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 cta-pulse">
-            <i class="fab fa-whatsapp text-lg"></i>
-            <span class="text-xs font-semibold">Semak Kelayakan</span>
-        </a>
-    </div>
+    <!-- Mobile Drawer Toggle Button -->
+    <button id="drawer-toggle" class="md:hidden fixed top-4 left-4 z-[999] bg-white text-neutral-700 w-10 h-10 rounded-md shadow-md flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+        <i class="fas fa-bars text-lg"></i>
+    </button>
 
     <!-- Drawer Overlay -->
     <div id="drawer-overlay" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300 ease-in-out"></div>
@@ -909,6 +967,12 @@
             }
         });
     </script>
+
+    <!-- Mobile Fixed Bottom Footer Bar (as clickable link) -->
+    <a href="https://wa.me/60137640032?text=Salam%20BijakPlan,%20saya%20berminat%20untuk%20dapatkan%20konsultasi%20percuma." target="_blank" class="md:hidden fixed bottom-0 left-0 w-full bg-gradient-to-r from-primary-gradientFrom/70 to-primary-gradientTo/70 backdrop-blur-sm py-4 px-3 h-20 shadow-lg z-50 flex justify-center items-center gap-4 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"> <!-- Decreased gradient opacity -->
+         <i class="fab fa-whatsapp text-3xl text-white"></i> <!-- Icon color white -->
+         <span class="text-xl font-semibold">Semak Kelayakan</span> <!-- Text color white -->
+    </a>
 
 </body>
 </html> 
